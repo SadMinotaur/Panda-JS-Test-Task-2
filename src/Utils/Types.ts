@@ -1,8 +1,20 @@
-export type Column = { id: number; name: string };
+export interface Column {
+  id: number;
+  name: string;
+  cells: TableCell[];
+}
 
-export type TableCell = { id: number; columnId: number; content: string };
+export interface ColumnWithState extends Column {
+  sortState: boolean | null;
+}
+export interface TableCell {
+  id: number;
+  content: string;
+}
+export interface TableProp {
+  columns: Column[];
+}
 
 export interface Table {
-  columns: Column[];
-  cells: TableCell[];
+  columns: ColumnWithState[];
 }
